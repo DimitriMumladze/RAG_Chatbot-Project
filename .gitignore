@@ -1,0 +1,12 @@
+# Python
+__pycache__/
+*.py[cod]
+venv/
+.venv/
+*.egg-info/
+
+# ლოკალური ვექტორული ბაზა (ingest-ით თავიდან იქმნება)
+chroma_store/
+
+# გარემო
+.env
