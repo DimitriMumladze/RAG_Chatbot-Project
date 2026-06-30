@@ -38,14 +38,15 @@ class RAGPipeline:
         res = self.collection.query(
             query_embeddings=[q_emb], n_results=config.TOP_K
         )
+        ids = res["ids"][0]
         docs = res["documents"][0]
         metas = res["metadatas"][0]
         dists = res["distances"][0]
         # cosine მანძილი → მსგავსება (1 - dist), მხოლოდ ანალიზისთვის
         hits = [
-            {"answer": d, "question": m.get("question", ""),
+            {"id": i, "answer": d, "question": m.get("question", ""),
              "category": m.get("category", ""), "similarity": round(1 - dist, 3)}
-            for d, m, dist in zip(docs, metas, dists)
+            for i, d, m, dist in zip(ids, docs, metas, dists)
         ]
         return hits
 

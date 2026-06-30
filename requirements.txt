@@ -1,8 +1,9 @@
 # ძირითადი დამოკიდებულებები (ყველა უფასო / ღია კოდის)
 sentence-transformers>=2.6.0   # ლოკალური embedding მოდელი (multilingual-e5)
 chromadb>=0.5.0                # ლოკალური ვექტორული ბაზა
-ollama>=0.3.0                  # ლოკალური LLM-ის კლიენტი (default backend)
-streamlit>=1.36.0             # მარტივი ვებ-ინტერფეისი (არასავალდებულო)
+python-dotenv>=1.0.0           # .env ფაილიდან გასაღების/პარამეტრების ჩატვირთვა
+streamlit>=1.36.0              # მარტივი ვებ-ინტერფეისი (არასავალდებულო)
 
-# არასავალდებულო: უფასო-ტარიფიანი API fallback (ქართულის უკეთესი ხარისხისთვის)
-# google-generativeai>=0.7.0
+# LLM backend — აირჩიეთ ერთ-ერთი (default: gemini, იხ. .env)
+google-generativeai>=0.8.0     # Gemini API (უფასო-ტარიფიანი, ქართულის კარგი ხარისხი)
+ollama>=0.3.0                  # ლოკალური LLM (Ollama; სრულად offline ალტერნატივა)
