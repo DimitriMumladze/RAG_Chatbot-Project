@@ -31,17 +31,21 @@ CSS = """
   --text:#17293D; --muted:#64748B; --border:#DCE4EC;
 }
 
-/* ფონტი ტექსტზე (ხატულებს არ ვეხებით) */
-html, body, [data-testid="stAppViewContainer"], [data-testid="stSidebar"],
-[data-testid="stAppViewContainer"] p, [data-testid="stAppViewContainer"] li,
-[data-testid="stAppViewContainer"] label, [data-testid="stAppViewContainer"] h1,
-[data-testid="stAppViewContainer"] h2, [data-testid="stAppViewContainer"] h3,
-.stMarkdown, .stButton button, .stChatInput textarea, .stTextInput input{
+/* ფონტი — მხოლოდ ჩვენს ტექსტურ ელემენტებზე. სტრუქტურულ კონტეინერებს (body,
+   stSidebar, stAppViewContainer) განზრახ არ ვეხებით, რომ Streamlit-ის material
+   ხატულების ფონტი მემკვიდრეობით არ დაირღვეს. */
+.stMarkdown, .stMarkdown p, .stMarkdown li, .stMarkdown span,
+.stButton button, .stChatInput textarea, .stTextInput input,
+.app-header, .app-header *, .row, .bubble, .chip, .src-label,
+.side-title, .side-note, .stat, .stat *{
   font-family:'Anonymous Pro','Noto Sans Georgian',monospace !important;
 }
-/* Streamlit-ის material ხატულების დაცვა */
-span[data-testid="stIconMaterial"], .material-icons, .material-symbols-outlined,
-[class*="material-symbols"]{ font-family:'Material Symbols Outlined' !important; }
+/* Streamlit-ის material ხატულების დაცვა (belt & suspenders) */
+[data-testid="stIconMaterial"], span[translate="no"],
+.material-icons, .material-icons-outlined, .material-symbols-rounded,
+.material-symbols-outlined, [class*="material-symbols"], [class*="material-icons"]{
+  font-family:'Material Symbols Rounded','Material Symbols Outlined','Material Icons Outlined','Material Icons' !important;
+}
 
 [data-testid="stAppViewContainer"]{ background:var(--bg); }
 [data-testid="stHeader"]{ background:transparent; }
